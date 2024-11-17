@@ -2,6 +2,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 from mpmath import zeta
 import matplotlib.colors as colors
+from tqdm import tqdm
 
 def compute_zeta_phase(re_s, im_s):
     """Compute the phase (argument) of the zeta function for a complex number s."""
@@ -11,7 +12,7 @@ def compute_zeta_phase(re_s, im_s):
     except:
         return np.nan
 
-def create_phase_plot(re_range=(-2, 4), im_range=(-20, 20), resolution=200):
+def create_phase_plot(re_range=(-2, 4), im_range=(-20, 20), resolution=50):
     """Create a phase plot of the Riemann zeta function."""
     # Create a grid of points
     re_points = np.linspace(re_range[0], re_range[1], resolution)
@@ -21,11 +22,14 @@ def create_phase_plot(re_range=(-2, 4), im_range=(-20, 20), resolution=200):
     # Initialize the phase array
     phase = np.zeros_like(RE)
     
-    # Compute zeta function phase for each point
+    # Compute zeta function phase for each point with progress bar
     print("Computing zeta function phases...")
-    for i in range(len(re_points)):
-        for j in range(len(im_points)):
-            phase[j, i] = compute_zeta_phase(RE[j, i], IM[j, i])
+    total_points = resolution * resolution
+    with tqdm(total=total_points) as pbar:
+        for i in range(resolution):
+            for j in range(resolution):
+                phase[j, i] = compute_zeta_phase(RE[j, i], IM[j, i])
+                pbar.update(1)
     
     return RE, IM, phase
 

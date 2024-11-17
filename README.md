@@ -1,21 +1,16 @@
-# Interactive Riemann Zeta Function Visualization
+# Riemann Zeta Function Visualization
 
-A comprehensive visualization tool for exploring the Riemann zeta function through multiple representations: 2D interactive plots, 3D surface plots, and phase diagrams.
+An interactive visualization tool for exploring the Riemann zeta function through multiple graphical representations.
 
-## Table of Contents
-- [Overview](#overview)
-- [Features](#features)
-  - [2D Interactive Visualization](#2d-interactive-visualization)
-  - [3D Surface Plot](#3d-surface-plot)
-  - [Phase Plot (Argand Diagram)](#phase-plot-argand-diagram)
-- [Requirements](#requirements)
-- [Installation](#installation)
-- [Usage](#usage)
-  - [2D Visualization](#2d-visualization)
-  - [3D Visualization](#3d-visualization)
-  - [Phase Visualization](#phase-visualization)
-- [Mathematical Background](#mathematical-background)
-- [License](#license)
+## Contents
+1. [2D Interactive Plot](#2d-interactive-plot-riemann_zetapy)
+2. [3D Surface Plot](#3d-surface-plot-riemann_zeta_3dpy)
+3. [Phase Plot](#phase-plot-riemann_zeta_phasepy)
+4. [Requirements](#requirements)
+5. [Installation](#installation)
+6. [Usage](#usage)
+7. [Mathematical Background](#mathematical-background)
+8. [License](#license)
 
 ## Overview
 
@@ -43,17 +38,45 @@ This project provides multiple interactive visualizations of the Riemann zeta fu
   - Real part: [-2, 4]
   - Imaginary part: [-20, 20]
 
-### Phase Plot (Argand Diagram)
-- Visualization of the argument/phase of ζ(s)
-- Cyclic color mapping from -180° to +180°
-- Features:
-  - Custom color scheme for clear phase transitions
-  - Critical line indicator
-  - High-resolution phase mapping
-  - Informative color bar
-- Range coverage:
-  - Real part: [-2, 4]
-  - Imaginary part: [-20, 20]
+### Phase Plot (riemann_zeta_phase.py)
+
+The phase plot visualizes the argument (phase) of the Riemann zeta function ζ(s) in the complex plane. The phase of a complex number represents its angle in the complex plane, measured counterclockwise from the positive real axis.
+
+### Mathematical Interpretation
+- The phase angle ranges from -180° to +180° (or -π to +π radians)
+- A phase of 0° means ζ(s) is purely real and positive
+- A phase of 180° or -180° means ζ(s) is purely real and negative
+- A phase of 90° means ζ(s) is purely imaginary and positive
+- A phase of -90° means ζ(s) is purely imaginary and negative
+- Other angles represent complex values with both real and imaginary parts
+
+### Features
+- Cyclic color mapping from -180° to +180°:
+  * Red: ±180° (negative real axis)
+  * Yellow/Green: ~90° (positive imaginary axis)
+  * Cyan/Blue: ~-90° (negative imaginary axis)
+  * Color transitions show continuous phase changes
+- Critical line indicator at Re(s) = 1/2
+- Interactive matplotlib interface
+- Progress bar during computation
+- Efficient 50x50 resolution grid
+- Color-coded phase transitions
+
+### Usage
+```bash
+python riemann_zeta_phase.py
+```
+
+### Interpretation Guide
+- Colors represent the phase angle of ζ(s)
+- Phase transitions (sharp color changes) indicate:
+  * Zeros of the function (phase rotates rapidly around these points)
+  * Poles (similar rapid phase rotation)
+  * Branch cuts (discontinuous phase changes)
+- White dashed line indicates the critical line Re(s) = 1/2
+  * The Riemann Hypothesis suggests all non-trivial zeros lie on this line
+- Smooth color gradients indicate regions where the function varies continuously
+- Complete color cycles (red→yellow→green→blue→red) indicate the function wrapping around the origin
 
 ## Requirements
 
@@ -119,8 +142,8 @@ The Riemann zeta function ζ(s) is a fundamental function in number theory. The 
 - The magnitude of the function |ζ(s)| in the complex plane
 - The phase/argument of the function, revealing its winding behavior
 - The zeros of the function, which appear as:
-  - Valleys in the 3D plot
-  - Phase singularities in the phase plot
+  * Valleys in the 3D plot
+  * Phase singularities in the phase plot
 
 The Riemann Hypothesis, one of the most important unsolved problems in mathematics, states that all non-trivial zeros of the zeta function lie on the critical line Re(s) = 1/2.
 
