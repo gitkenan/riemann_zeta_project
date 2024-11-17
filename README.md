@@ -10,7 +10,8 @@ An interactive visualization tool for exploring the Riemann zeta function throug
 5. [Installation](#installation)
 6. [Usage](#usage)
 7. [Mathematical Background](#mathematical-background)
-8. [License](#license)
+8. [The Riemann-Siegel Formula](#the-riemann-siegel-formula-riemann_siegelpy)
+9. [License](#license)
 
 ## Overview
 
@@ -146,6 +147,47 @@ The Riemann zeta function ζ(s) is a fundamental function in number theory. The 
   * Phase singularities in the phase plot
 
 The Riemann Hypothesis, one of the most important unsolved problems in mathematics, states that all non-trivial zeros of the zeta function lie on the critical line Re(s) = 1/2.
+
+## The Riemann-Siegel Formula (riemann_siegel.py)
+
+The Riemann-Siegel formula provides an efficient method for computing the Riemann zeta function ζ(s) for large values of the imaginary part t. This implementation is particularly useful for investigating zeros high on the critical line.
+
+### Implementation Features
+
+- **Riemann-Siegel Formula**: Efficient computation of ζ(s) using the Riemann-Siegel formula
+- **Theta Function**: Accurate approximation of the Riemann-Siegel theta function
+- **Z-Function**: Implementation of the Z-function for critical line calculations
+- **Error Estimation**: Built-in error estimation for numerical approximations
+
+### Numerical Properties
+
+Our implementation has been thoroughly tested and exhibits the following properties:
+
+1. **Functional Equation**: Accurately preserves the functional equation ζ(s) = χ(s)ζ(1-s)
+2. **Reflection Symmetry**: Maintains the reflection property ζ(s̄) = ζ(s)̄
+3. **Known Zeros**: Successfully identifies known non-trivial zeros
+4. **Critical Line Values**: Computes reasonable approximations along the critical line
+
+### Usage Notes
+
+The implementation provides good accuracy for:
+- Moderate values of t (imaginary part) up to ~50
+- Critical line calculations near known zeros
+- General exploration of zeta function properties
+
+For high-precision calculations, especially at larger heights on the critical line (t > 50), it is recommended to use mpmath's implementation. Our implementation balances speed and accuracy while maintaining the essential mathematical properties of the zeta function.
+
+### Test Suite
+
+The test suite (test_riemann_siegel.py) verifies:
+- Functional equation preservation
+- Reflection symmetry
+- Known zero detection
+- Critical line behavior
+- Theta function properties
+- Z-function characteristics
+
+All tests include appropriate numerical tolerances to account for the inherent approximations in the computational methods.
 
 ## License
 
